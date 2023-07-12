@@ -1,5 +1,5 @@
 .barre {
-    background-color: #f2f2f2;
+    background-color: #3c1e1e;
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -9,7 +9,7 @@
 button {
     width: 150px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin-right: 10px;
 }
 
