@@ -7,9 +7,16 @@
 }
 
 button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
     margin-right: 10px;
 }
 
 .texte-haut-droite {
     margin-left: auto;
+}
+
+body{
+    background-color: #f2f2f2;
 }
