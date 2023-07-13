@@ -4,6 +4,12 @@ button {
     border-radius: 10px;
     margin-right: 10px;
 }
+button:hover
+{
+	transform: translate(0,-6px);
+	box-shadow: 10px -10px 25px  rgba(143,64,248,0.25);
+	color : blue; 
+}
 
 .texte-haut-droite {
     margin-left: auto;
