@@ -3,25 +3,16 @@
     justify-content: center;
     align-items: center;
   }
-.button 
-{
-    width: 150px;
-    height: 40px;
-    border-radius: 10px;
-    margin-right: 10px;
-	border : 8;
-	border-color: rgb(68, 68, 77);
-	background : transparant;
-	position: relative;
-	overflow : hidden;
-	padding : 3px 10px;
-	border-radius : 30px;
-	font-size : 1.2em;
-	cursor: pointer;
-	box-shadow: 0px -0px 0px 0px rgba(143,64,248,.7),0px 0px 0px 0px rgba(39,200,255,.5);
-	transition : all .2s;
-	position : right;
-}
+
+  .boutton 
+  {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
 .barre:hover .boutton {
     background-color: #00ff00;
   }
