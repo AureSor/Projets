@@ -1,3 +1,8 @@
+.barre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 .button 
 {
     width: 150px;
@@ -17,10 +22,9 @@
 	transition : all .2s;
 	position : right;
 }
-.button:hover
-{
-	background-color : blue; 
-}
+.barre:hover .boutton {
+    background-color: #00ff00;
+  }
 
 .texte-haut-droite {
     margin-left: auto;
