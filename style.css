@@ -3,6 +3,9 @@ button {
     height: 40px;
     border-radius: 10px;
     margin-right: 10px;
+	border : 8;
+	border-color: rgb(68, 68, 77);
+	background : transparant;
 	position: relative;
 	overflow : hidden;
 	padding : 3px 10px;
