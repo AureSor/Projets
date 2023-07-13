@@ -7,14 +7,14 @@
   .boutton 
   {
     padding: 10px 20px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
+    background-color: #3b3939;
+    color: #302d2d;
+    border: 1Opx;
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
 .barre:hover .boutton {
-    background-color: #00ff00;
+    background-color: #585858;
   }
 
 .texte-haut-droite {
