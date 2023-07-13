@@ -1,24 +1,58 @@
-.barre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .boutton 
-  {
-    padding: 10px 20px;
-    background-color: #3b3939;
-    color: #302d2d;
-    border: 1Opx;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-.barre:hover .boutton {
-    background-color: #585858;
-  }
-
-.texte-haut-droite {
-    margin-left: auto;
+*
+{
+	font-family: calibri light;
 }
+body
+{
+	margin: 0 auto;
+	background: linear-gradient(rgb(198,221,234),rgb(148,192,216));
+}
+button
+{
+	border : 8;
+	border-color: blue;
+	background : transparant;
+	position: relative;
+	overflow : hidden;
+	padding : 3px 10px;
+	border-radius : 30px;
+	font-size : 1.2em;
+	cursor: pointer;
+	box-shadow: 0px -0px 0px 0px rgba(143,64,248,.7),0px 0px 0px 0px rgba(39,200,255,.5);
+	transition : all .2s;
+	position : right;
 
-
+}
+button:hover
+{
+	transform: translate(0,-6px);
+	box-shadow: 10px -10px 25px  rgba(143,64,248,0.25);
+	color : blue; 
+}
+section.ligne
+{
+	display: flex;
+	justify-content : space-between;
+	padding : 20px;
+	
+}
+button:after {
+	width:100%
+	
+}
+section.top
+{
+}
+h1.nom
+{
+	border: 2;
+	width: 400px;
+	background-color: blue;
+	padding : 3px 10px;
+	border-color : blue;
+}
+section.profil p
+{
+	display: flex;
+	padding : 12px;
+}
