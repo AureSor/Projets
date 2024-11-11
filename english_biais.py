@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as streamlit
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,17 +7,17 @@ import time
 # Variables 
 n = 6
 pts = 0 
-if 'pts' not in st.session_state: 
-    st.session_state.pts = 0
-if 'valeur' not in st.session_state:
-    st.session_state.valeur = 0
-if 'i' not in st.session_state:
-    st.session_state.i = 0
-if 'result' not in st.session_state:
-    st.session_state.result  = pd.DataFrame(np.zeros((n , 2)))
+if 'pts' not in streamlit.session_state: 
+    streamlit.session_state.pts = 0
+if 'valeur' not in streamlit.session_state:
+    streamlit.session_state.valeur = 0
+if 'i' not in streamlit.session_state:
+    streamlit.session_state.i = 0
+if 'result' not in streamlit.session_state:
+    streamlit.session_state.result  = pd.DataFrame(np.zeros((n , 2)))
 
 # Calculate the total points
-st.session_state.pts = st.session_state.result.sum().sum() * 15  # Sum all values and multiply by 15
+streamlit.session_state.pts = streamlit.session_state.result.sum().sum() * 15  # Sum all values and multiply by 15
 
 # Define the biases, questions, and answers
 data = {
@@ -89,18 +89,18 @@ df_biais = pd.DataFrame(data)
 def questions():
     df_biais = pd.DataFrame(data)
     # Select a bias
-    selected_bias_index = st.session_state.i
+    selected_bias_index = streamlit.session_state.i
     # Display the concrete example
-    st.write("Concrete example:", df_biais["Examples"][selected_bias_index])
+    streamlit.write("Concrete example:", df_biais["Examples"][selected_bias_index])
     # Display the first question with selectbox
     first_question = df_biais["Questions"][selected_bias_index][0]
-    response_first = st.selectbox(f"{first_question}", ["Yes", "No"])
+    response_first = streamlit.selectbox(f"{first_question}", ["Yes", "No"])
     # Display the second question with selectbox
     second_question = df_biais["Questions"][selected_bias_index][1]
-    response_second = st.selectbox(f"{second_question}", ["Yes", "No"])
+    response_second = streamlit.selectbox(f"{second_question}", ["Yes", "No"])
     # Display the selected answers
-    st.write("Answer to the first question:", response_first)
-    st.write("Answer to the second question:", response_second)
+    streamlit.write("Answer to the first question:", response_first)
+    streamlit.write("Answer to the second question:", response_second)
     return response_first, response_second
 
 # Function for the dots menu
@@ -115,71 +115,71 @@ def dots_menu(i, n):
     plt.xlim(-0.5, n-0.5)  # Adjust x-axis limits
     plt.axis('off')  # Hide axes
     plt.gca().set_facecolor('none')  # Transparent plot background
-    st.pyplot(plt, transparent=True)
+    streamlit.pyplot(plt, transparent=True)
 
 # Home page
-if st.session_state.valeur == 0:
-    col1, col2 = st.columns([1, 3])  
+if streamlit.session_state.valeur == 0:
+    col1, col2 = streamlit.columns([1, 3])  
     with col1:
-        st.write(f"{st.session_state.pts} pts")
+        streamlit.write(f"{streamlit.session_state.pts} pts")
     with col2:
-        st.title("Statistical Biases")
-    col1, col2, col3 = st.columns([1, 2, 1])  
+        streamlit.title("Statistical Biases")
+    col1, col2, col3 = streamlit.columns([1, 2, 1])  
     with col2:
-        if st.button("Start"):
-            st.session_state.valeur = 1 
-            st.success("Good luck!")
+        if streamlit.button("Start"):
+            streamlit.session_state.valeur = 1 
+            streamlit.success("Good luck!")
             time.sleep(0.3)
-            st.session_state.clear()  # Clears session state to trigger rerun
+            streamlit.session_state.clear()  # Clears session state to trigger rerun
            
 
 # Page for the game i
-if st.session_state.valeur == 1:
+if streamlit.session_state.valeur == 1:
     time.sleep(0.31)
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = streamlit.columns([1, 2, 1])
     with col1: 
-        st.write(f"{st.session_state.pts} pts")
-    dots_menu(st.session_state.i, n)
+        streamlit.write(f"{streamlit.session_state.pts} pts")
+    dots_menu(streamlit.session_state.i, n)
     first, second = questions()
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = streamlit.columns([1, 2, 1])
     with col1: 
-        if st.button("Previous") and st.session_state.i > 0:
-            st.session_state.i -= 1 
+        if streamlit.button("Previous") and streamlit.session_state.i > 0:
+            streamlit.session_state.i -= 1 
            
     with col2: 
-        st.button("Check answer")  
+        streamlit.button("Check answer")  
     with col3: 
-        if st.session_state.i == n - 1:
-            if st.button("View results"): 
-                st.session_state.valeur = 2  
-                st.session_state.clear()  # Clears session state to trigger rerun
+        if streamlit.session_state.i == n - 1:
+            if streamlit.button("View results"): 
+                streamlit.session_state.valeur = 2  
+                streamlit.session_state.clear()  # Clears session state to trigger rerun
                 
-        if st.session_state.i < n - 1:
-            if st.button("Next"):
-                if (first == "Yes" and data["Answers"][st.session_state.i][0]) or (first == "No" and not data["Answers"][st.session_state.i][0]):
-                    st.session_state.result.iloc[st.session_state.i, 0] = 1
-                if (second == "Yes" and data["Answers"][st.session_state.i][1]) or (second == "No" and not data["Answers"][st.session_state.i][1]):
-                    st.session_state.result.iloc[st.session_state.i, 1] = 1
-                st.session_state.i += 1
+        if streamlit.session_state.i < n - 1:
+            if streamlit.button("Next"):
+                if (first == "Yes" and data["Answers"][streamlit.session_state.i][0]) or (first == "No" and not data["Answers"][streamlit.session_state.i][0]):
+                    streamlit.session_state.result.iloc[streamlit.session_state.i, 0] = 1
+                if (second == "Yes" and data["Answers"][streamlit.session_state.i][1]) or (second == "No" and not data["Answers"][streamlit.session_state.i][1]):
+                    streamlit.session_state.result.iloc[streamlit.session_state.i, 1] = 1
+                streamlit.session_state.i += 1
                 time.sleep(0.3)
-                st.write("Current results:")
+                streamlit.write("Current results:")
             
 
-if st.session_state.valeur == 2: 
-    st.write("Results")
-    st.markdown(f"You scored {st.session_state.pts} pts")
+if streamlit.session_state.valeur == 2: 
+    streamlit.write("Results")
+    streamlit.markdown(f"You scored {streamlit.session_state.pts} pts")
 
-    if 'result' in st.session_state:
-        st.write(f"Total points: {st.session_state.pts}")
+    if 'result' in streamlit.session_state:
+        streamlit.write(f"Total points: {streamlit.session_state.pts}")
         displayed_biases = set()
         for i in range(n):
-            if i < st.session_state.result.shape[0]:
+            if i < streamlit.session_state.result.shape[0]:
                 for j in range(2):  
-                    if j < st.session_state.result.shape[1]:
-                        if st.session_state.result.iloc[i, j] == 0:
+                    if j < streamlit.session_state.result.shape[1]:
+                        if streamlit.session_state.result.iloc[i, j] == 0:
                             if df_biais['Biases'][i] not in displayed_biases:
-                                st.write(f"You need to improve on the bias: {df_biais['Biases'][i]}")
-                                st.write(f"Advice: {bias_advice[df_biais['Biases'][i]]}")
+                                streamlit.write(f"You need to improve on the bias: {df_biais['Biases'][i]}")
+                                streamlit.write(f"Advice: {bias_advice[df_biais['Biases'][i]]}")
                                 displayed_biases.add(df_biais['Biases'][i])  
     else:
-        st.write("No results available.")
+        streamlit.write("No results available.")
