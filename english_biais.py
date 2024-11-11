@@ -130,6 +130,7 @@ if st.session_state.valeur == 0:
             st.session_state.valeur = 1 
             st.success("Good luck!")
             time.sleep(0.3)
+            st.session_state.clear()  # Clears session state to trigger rerun
             st.experimental_rerun()
 
 # Page for the game i
@@ -151,6 +152,7 @@ if st.session_state.valeur == 1:
         if st.session_state.i == n - 1:
             if st.button("View results"): 
                 st.session_state.valeur = 2  
+                st.session_state.clear()  # Clears session state to trigger rerun
                 st.experimental_rerun()
         if st.session_state.i < n - 1:
             if st.button("Next"):
