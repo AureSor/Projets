@@ -131,7 +131,7 @@ if st.session_state.valeur == 0:
             st.success("Good luck!")
             time.sleep(0.3)
             st.session_state.clear()  # Clears session state to trigger rerun
-            st.experimental_rerun()
+           
 
 # Page for the game i
 if st.session_state.valeur == 1:
@@ -145,7 +145,7 @@ if st.session_state.valeur == 1:
     with col1: 
         if st.button("Previous") and st.session_state.i > 0:
             st.session_state.i -= 1 
-            st.experimental_rerun()
+           
     with col2: 
         st.button("Check answer")  
     with col3: 
@@ -153,7 +153,7 @@ if st.session_state.valeur == 1:
             if st.button("View results"): 
                 st.session_state.valeur = 2  
                 st.session_state.clear()  # Clears session state to trigger rerun
-                st.experimental_rerun()
+                
         if st.session_state.i < n - 1:
             if st.button("Next"):
                 if (first == "Yes" and data["Answers"][st.session_state.i][0]) or (first == "No" and not data["Answers"][st.session_state.i][0]):
@@ -163,7 +163,7 @@ if st.session_state.valeur == 1:
                 st.session_state.i += 1
                 time.sleep(0.3)
                 st.write("Current results:")
-                st.experimental_rerun()
+            
 
 if st.session_state.valeur == 2: 
     st.write("Results")
